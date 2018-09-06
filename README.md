@@ -10,6 +10,8 @@
 * Using database `test` (or change the DB name property in code in file `utils/DBWrapper.php`), create required table by running `sql/currency_rates_ddl.sql`.
 * Run `$ php cron-job.php` to get data from the API and populate the DB table.
 * Run `$ php main.php` to activate the CLI.
+* Input individual requests like `JPY 500` or array requests like `array( 'JPY 5000', 'CZK 62.5' )`
+* Input `exit` to quit the CLI.
 
 ## Future improvement
 * I've pointed out future improvements as inline comments in the code. Look for `Future me [TODO]: ...` comments.

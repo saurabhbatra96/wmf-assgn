@@ -22,6 +22,11 @@ $ip = new InputParser();
 
 while (true) {
 	$inp = readline("input:");
+
+	// Check for exit.
+	if ($inp === "exit")
+		break;
+
 	$result = $ip->parse($inp);
 	$resp_string = "";
 
@@ -32,6 +37,7 @@ while (true) {
 	// Check if input is in the form of an array or not.
 	if ($result['is_array']) {
 		$resp_string .= "array(";
+		// Convert to USD amount for each request.
 		foreach ($result['requests'] as $request) {
 			$rate = $conversion_map[$request['currency']];
 			$amount = (float) $request['amount'];
@@ -40,6 +46,7 @@ while (true) {
 		}
 		$resp_string .= ")";
 	} else {
+		// Convert to USD amount for single request.
 		$rate = $conversion_map[$result['currency']];
 		$amount = (float) $result['amount'];
 		$usd_amount = $rate*$amount;
@@ -48,5 +55,5 @@ while (true) {
 
 	echo "output: ".$resp_string."\n";
 }
-$db->
+$db->close();
 ?>

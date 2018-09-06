@@ -19,6 +19,8 @@ class DBWrapper {
 	}
 
 	public function doInsertOrUpdate($currency, $rate) {
+		// Insert or update record based on whether the key - currency
+		// was present before or not.
 		$query_string = 'insert into currency_rates(currency, conv_rate) values("'.$currency.'", '.$rate.') on duplicate key update currency="'.$currency.'", conv_rate='.$rate.';';
 
 		if ($this->conn->query($query_string)) {
